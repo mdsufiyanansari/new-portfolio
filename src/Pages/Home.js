@@ -8,10 +8,10 @@ const Home = () => {
  
   return (
     <>
-    <motion.div  className="text-5xl py-[10%]   font-bold text-white bg-gradient-to-r from-green-300 to-green-100 w-screen  px-[70px] flex "initial={{ opacity: 0}} whileInView={{opacity:1}} viewport={{ once: true}}>
+    <motion.div  className="text-5xl py-[10%]  font-bold text-white bg-gradient-to-r from-green-300 to-green-100 w-screen  px-[70px] flex "initial={{ opacity: 0}} whileInView={{opacity:1}} viewport={{ once: true}}>
      <div className=" text-3xl text-green-700 w-[50%]">
       HELLO!
-      <h1 className='text-[80px] mt-6 text-white'>I'm Md</h1>
+      <h1 className='text-[80px] mt-6 text-white '>I'm Md</h1>
       <h1 className='text-[80px] mt-14 '>Sufiyan Ansari</h1>
       <h1 className='text-[80px] mt-16 text-white'>A Web Devloper</h1>
       <p className='mt-14 text-xl text-gray-500'>I'm a Freelance UI/UX Designer and Developer based in Bhagalpur,<br /> Bihar. I strives to build immersive and beautiful web applications <br /> through carefully crafted code and user-centric design.</p>

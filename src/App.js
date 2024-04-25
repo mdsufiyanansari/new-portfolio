@@ -6,10 +6,11 @@ import Projects from './Pages/Projects';
 import Contact from './Pages/Contact';
 import Navbar from './component/Navbar';
 import Counter from './app/Counter';
+import Calculator from './app/Calculator';
+import Clock from './app/Clock';
 import { useLocation } from 'react-router-dom';
 
 
-// import Calculator from './app/Calculator';
 
 const App = () => {
 const route=useLocation();
@@ -24,16 +25,21 @@ const route=useLocation();
     <Routes>
 
     <Route path="/counter" element={<Counter/>}></Route>
+    <Route path="/calculator" element={<Calculator/>}></Route>
+    <Route path="/clock" element={<Clock/>}></Route>
    
     </Routes>
 
-  {route.pathname!="/counter" && (<>
+  {route.pathname!="/counter"  && (<>
+  {route.pathname!="/calculator" && (<>
+  {route.pathname!="/clock" && (<>
     <Home/>
     <About/>
     <Projects/>
     <Contact/>
+    </>)}
   </>)}
-   
+   </>)}
     
    
     

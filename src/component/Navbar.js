@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
   <>
   
-  <div className="bg-white w-screen h-[80px] bg-opacity-55 backdrop-filter backdrop-blur-2xl  fixed flex justify-around">
+  <div className="z-50 bg-white w-screen h-[80px] bg-opacity-55 backdrop-filter backdrop-blur-2xl  fixed flex justify-around">
     <div className=" w-[150px] h-[100px] center font-bold text-green-400"><img src="image/img1.png" alt="" /></div>
     <div className="text-2xl p-5 flex gap-[40px] ">
   <div className="text-green-300 font-bold cursor-pointer  hover:text-green-600" ><Link smooth to='/#'>Home</Link></div>
