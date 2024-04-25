@@ -8,6 +8,7 @@ import Navbar from './component/Navbar';
 import Counter from './app/Counter';
 import Calculator from './app/Calculator';
 import Clock from './app/Clock';
+import Temperature from './app/Temperature';
 import { useLocation } from 'react-router-dom';
 
 
@@ -27,18 +28,22 @@ const route=useLocation();
     <Route path="/counter" element={<Counter/>}></Route>
     <Route path="/calculator" element={<Calculator/>}></Route>
     <Route path="/clock" element={<Clock/>}></Route>
+    <Route path="/temperature" element={<Temperature/>}></Route>
    
     </Routes>
+    
 
   {route.pathname!="/counter"  && (<>
   {route.pathname!="/calculator" && (<>
   {route.pathname!="/clock" && (<>
+  {route.pathname!="/temperature" && (<>
     <Home/>
     <About/>
     <Projects/>
     <Contact/>
     </>)}
   </>)}
+   </>)}
    </>)}
     
    
