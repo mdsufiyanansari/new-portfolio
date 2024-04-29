@@ -18,16 +18,16 @@ const Home = () => {
 
       <div className="flex gap-4">
      <div>
-      <motion.button className='flex cursor-pointer gap-2 text-xl bg-white px-5 py-2 mt-6 rounded-full text-green-400 hover:bg-gradient-to-tr from-green-400 to-green-200 hover:text-white'drag whileHover={{scale: 1.1}}> <div className="mt-[5px]"><LiaHireAHelper /></div>HIRE ME</motion.button>
+      <motion.button className='flex cursor-pointer gap-2 text-xl bg-white px-5 py-2 mt-6 rounded-full text-green-400 hover:bg-gradient-to-tr from-green-400 to-green-200 hover:text-white duration-300'drag whileHover={{scale: 1.1}}> <div className="mt-[5px]"><LiaHireAHelper /></div>HIRE ME</motion.button>
       </div>
       <div>
-      <motion.button className='gap-2 cursor-pointer flex text-xl bg-white px-5 py-2 mt-6 rounded-full text-green-400 hover:bg-gradient-to-tr from-green-400 to-green-200 hover:text-white'drag whileHover={{scale: 1.1}}> <div className="mt-[5px]"><FaFileDownload /></div>DOWNLOAD CV</motion.button>
+      <motion.button className='gap-2 cursor-pointer flex text-xl bg-white px-5 py-2 mt-6 rounded-full text-green-400 hover:bg-gradient-to-tr from-green-400 to-green-200 hover:text-white duration-300'drag whileHover={{scale: 1.1}}> <div className="mt-[5px]"><FaFileDownload /></div>DOWNLOAD CV</motion.button>
       </div>
       </div>
       
     
      </div>
-    <div className='w-[1000px]' > <img src="image/hire.png" alt="" /></div>
+    <div className='w-[650px] border-b-2 center h-[800px]    border-white bg-green-600 opacity-30  rounded-full ' > <img src="image/my pic.jpg" alt="" className='h-[700px] rounded-full border-[6px] border-green-200' /></div>
     
     </motion.div>
     </>
