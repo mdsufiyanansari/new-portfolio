@@ -19,8 +19,8 @@ const Navbar = () => {
       
       <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#about'>About</Link></div>
       <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#projects'>Projects</Link></div>
-      <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#projects'>Skills</Link></div>
-      <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#Contact'>Contact</Link></div>
+      <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#Skills'>Skills</Link></div>
+      <div className="cursor-pointer  hover:text-green-500"><Link smooth to='/#contact'>Contact</Link></div>
     </div>
     <button className="bg-white w-[300px] h-[50px] mt-[15px] border-green-300 border-[4px] rounded-full text-2xl font-semibold text-green-400 hover:bg-green-300 hover:text-white hover:border-white duration-700">Hire me..</button>
 

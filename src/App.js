@@ -3,6 +3,7 @@ import {Routes, Route } from "react-router-dom";
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Projects from './Pages/Projects';
+import Skills from './Pages/Skills';
 import Contact from './Pages/Contact';
 import Navbar from './component/Navbar';
 import Counter from './app/Counter';
@@ -10,6 +11,8 @@ import Calculator from './app/Calculator';
 import Clock from './app/Clock';
 import Temperature from './app/Temperature';
 import { useLocation } from 'react-router-dom';
+
+import Footer from './component/Footer';
 
 
 
@@ -40,7 +43,10 @@ const route=useLocation();
     <Home/>
     <About/>
     <Projects/>
+    <Skills/>
     <Contact/>
+    <Footer/>
+  
     </>)}
   </>)}
    </>)}
