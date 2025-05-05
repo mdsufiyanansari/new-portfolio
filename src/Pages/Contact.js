@@ -1,37 +1,98 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedin } from "react-icons/fa";
 
-const Contact = () => {
-  return (
-    <section className="py-16  bg-white">
-      <div className="container mx-auto bg-gradient-to-tr from-white w-screen to-blue-100 rounded-br-full rounded-tl-full  px-4">
-        <div className="flex flex-col lg:flex-row">
-        
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <img src="image/contact.png" alt="Contact" className="h-[600px]" />
-          </div>
-       
-          <div className="lg:w-1/2 lg:pl-8">
-            <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-            <form className="grid grid-cols-1 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-gray-700 font-medium">Name</label>
-                <input type="text" id="name" name="name" className="mt-1 p-3 block w-full rounded-lg bg-white border border-gray-300 focus:border-blue-500 focus:outline-none" />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-gray-700 font-medium">Email</label>
-                <input type="email" id="email" name="email" className="mt-1 p-3 block w-full rounded-lg bg-white border border-gray-300 focus:border-blue-500 focus:outline-none" />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-gray-700 font-medium">Message</label>
-                <textarea id="message" name="message" rows="4" className="mt-1 p-3 block w-full rounded-lg bg-white border border-gray-300 focus:border-blue-500 focus:outline-none"></textarea>
-              </div>
-              <button type="submit" className="py-3 px-6 bg-gradient-to-tr from-gray-400 to-gray-200 text-white font-bold rounded-lg  hover:bg-gradient-to-br from-slate-600 to-slate-300 duration-500 text-xl">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.2 },
+  }),
 };
 
-export default Contact;
+export default function Contact() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-50 py-24 px-6">
+      <section className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <motion.h2
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-4xl sm:text-5xl font-extrabold text-center text-cyan-500 mb-14"
+        >
+          Get in Touch
+        </motion.h2>
+
+        {/* Info Boxes */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center mb-16">
+          {[{ icon: <FaEnvelope size={24} />, title: "Email", text: "sufiyan@example.com" },
+            { icon: <FaPhoneAlt size={24} />, title: "Phone", text: "+91 98765 43210" },
+            { icon: <FaMapMarkerAlt size={24} />, title: "Location", text: "Mumbai, India" },
+            { icon: <FaLinkedin size={24} />, title: "LinkedIn", text: "linkedin.com/in/sufiyan", link: "https://linkedin.com/in/sufiyan" }
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+              className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100 hover:shadow-2xl hover:border-cyan-300 transition duration-300"
+            >
+              <div className="text-cyan-500 mb-3">{item.icon}</div>
+              <h4 className="font-semibold text-lg text-gray-800 mb-2">{item.title}</h4>
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-cyan-600 transition duration-200"
+                >
+                  {item.text}
+                </a>
+              ) : (
+                <p className="text-gray-600">{item.text}</p>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Contact Form */}
+        <motion.form
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="bg-white rounded-2xl shadow-lg p-10 border border-gray-100 space-y-6 max-w-3xl mx-auto"
+        >
+          <div className="grid sm:grid-cols-2 gap-6">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+            />
+          </div>
+          <textarea
+            placeholder="Your Message"
+            rows={5}
+            className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 transition duration-300"
+          ></textarea>
+          <button
+            type="submit"
+            className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg font-semibold transition shadow-md hover:shadow-lg"
+          >
+            Send Message
+          </button>
+        </motion.form>
+      </section>
+    </div>
+  );
+}

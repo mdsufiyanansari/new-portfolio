@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
 
 const Temperature = () => {
-  // State variables to store the input values and converted temperatures
   const [celsius, setCelsius] = useState('');
   const [fahrenheit, setFahrenheit] = useState('');
   const [kelvin, setKelvin] = useState('');
 
-  // Function to handle Celsius input change
-  const convertCelsius = (e) => {
-    setCelsius(e.target.value);
-  };
+  const convertCelsius = (e) => setCelsius(e.target.value);
+  const convertFahrenheit = (e) => setFahrenheit(e.target.value);
+  const convertKelvin = (e) => setKelvin(e.target.value);
 
-  // Function to handle Fahrenheit input change
-  const convertFahrenheit = (e) => {
-    setFahrenheit(e.target.value);
-  };
-
-  // Function to handle Kelvin input change
-  const convertKelvin = (e) => {
-    setKelvin(e.target.value);
-  };
-
-  // Function to convert temperature to Celsius
   const convertToCelsius = () => {
     if (fahrenheit !== '') {
       setCelsius(((parseFloat(fahrenheit) - 32) * 5 / 9).toFixed(2));
@@ -30,7 +17,6 @@ const Temperature = () => {
     }
   };
 
-  // Function to convert temperature to Fahrenheit
   const convertToFahrenheit = () => {
     if (celsius !== '') {
       setFahrenheit(((parseFloat(celsius) * 9 / 5) + 32).toFixed(2));
@@ -39,7 +25,6 @@ const Temperature = () => {
     }
   };
 
-  // Function to convert temperature to Kelvin
   const convertToKelvin = () => {
     if (celsius !== '') {
       setKelvin((parseFloat(celsius) + 273.15).toFixed(2));
@@ -49,67 +34,67 @@ const Temperature = () => {
   };
 
   return (
-    <>
-      <div className="h-screen center " >
-        <div className="p-4 w-[550px] opacity-70 shadow-2xl shadow-black h-[500px] bg-gradient-to-tr from-slate-400 to-gray-200 rounded-bl-3xl rounded-tr-3xl">
-          <label htmlFor="" className="text-xl font-semibold">
-            Enter the Celsius
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-200 to-slate-400 p-6">
+      <div className="w-full max-w-xl p-8 backdrop-blur-xl bg-white/30 rounded-3xl shadow-2xl border border-white/40">
+        <h2 className="text-3xl font-bold text-center text-gray-900 mb-6">Temperature Converter</h2>
+
+        <div className="space-y-4">
+          <div>
+            <label className="block text-gray-800 font-semibold mb-1">Celsius</label>
             <input
-              type="text"
-              className="w-full font-thin mt-2 text-black outline-gray-200 h-12 px-4 "
-              placeholder="Celsius"
+              type="number"
               value={celsius}
               onChange={convertCelsius}
+              placeholder="Enter Celsius"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 outline-none"
             />
-          </label>
+          </div>
 
-          <label htmlFor="" className="text-xl font-semibold">
-            Enter the Fahrenheit
+          <div>
+            <label className="block text-gray-800 font-semibold mb-1">Fahrenheit</label>
             <input
-              type="text"
-              className="w-full font-thin mt-2 text-black outline-gray-200 h-12 px-4 "
-              placeholder="Fahrenheit"
+              type="number"
               value={fahrenheit}
               onChange={convertFahrenheit}
+              placeholder="Enter Fahrenheit"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 outline-none"
             />
-          </label>
+          </div>
 
-          <label htmlFor="" className="text-xl font-semibold">
-            Enter the Kelvin
+          <div>
+            <label className="block text-gray-800 font-semibold mb-1">Kelvin</label>
             <input
-              type="text"
-              className="w-full outline-gray-200  font-thin mt-2 text-black  h-12 px-4"
-              placeholder="Kelvin"
+              type="number"
               value={kelvin}
               onChange={convertKelvin}
+              placeholder="Enter Kelvin"
+              className="w-full p-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-cyan-500 outline-none"
             />
-          </label>
-
-          <div className="mt-10 font-medium flex gap-2">
-            <button
-              onClick={convertToCelsius}
-              className="w-[200px] hover:bg-gradient-to-tr from-gray-900 to-gray-100 duration-1000 hover:shadow-inner hover:shadow-white rounded-full border-2 border-white hover:text-white p-2"
-            >
-              Convert To Celsius
-            </button>
-
-            <button
-              onClick={convertToFahrenheit}
-              className="w-[230px] hover:bg-gradient-to-tr from-gray-900 to-gray-100 duration-1000 hover:shadow-inner hover:shadow-white rounded-full border-2 border-white hover:text-white p-2"
-            >
-              Convert To Fahrenheit
-            </button>
-
-            <button
-              onClick={convertToKelvin}
-              className="w-[200px] hover:bg-gradient-to-tr from-gray-900 to-gray-100 duration-1000 hover:shadow-inner hover:shadow-white rounded-full border-2 border-white hover:text-white p-2"
-            >
-              Convert To Kelvin
-            </button>
           </div>
         </div>
+
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={convertToCelsius}
+            className="flex-1 bg-cyan-500 hover:bg-cyan-700 text-white py-3 rounded-xl transition-all duration-300"
+          >
+            Convert to Celsius
+          </button>
+          <button
+            onClick={convertToFahrenheit}
+            className="flex-1 bg-blue-500 hover:bg-blue-700 text-white py-3 rounded-xl transition-all duration-300"
+          >
+            Convert to Fahrenheit
+          </button>
+          <button
+            onClick={convertToKelvin}
+            className="flex-1 bg-purple-500 hover:bg-purple-700 text-white py-3 rounded-xl transition-all duration-300"
+          >
+            Convert to Kelvin
+          </button>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

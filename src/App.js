@@ -10,6 +10,9 @@ import Counter from './app/Counter';
 import Calculator from './app/Calculator';
 import Clock from './app/Clock';
 import Temperature from './app/Temperature';
+import Task from './app/Task';
+import Weather from './app/Weather';
+
 import { useLocation } from 'react-router-dom';
 
 import Footer from './component/Footer';
@@ -32,6 +35,14 @@ const route=useLocation();
     <Route path="/calculator" element={<Calculator/>}></Route>
     <Route path="/clock" element={<Clock/>}></Route>
     <Route path="/temperature" element={<Temperature/>}></Route>
+    <Route path="/weather" element={<Weather/>}></Route>
+    <Route path="/task" element={<Task/>}></Route>
+    <Route path="/about" element={   <About/>}></Route>
+    <Route path="/projects" element={    <Projects/>}></Route>
+    <Route path="/skills" element={  <Skills/>}></Route>
+    <Route path="/contact" element={ <Contact/>}></Route>
+    <Route path="/" element={ <Home/>}></Route>
+    
    
     </Routes>
     
@@ -40,13 +51,18 @@ const route=useLocation();
   {route.pathname!="/calculator" && (<>
   {route.pathname!="/clock" && (<>
   {route.pathname!="/temperature" && (<>
-    <Home/>
-    <About/>
-    <Projects/>
-    <Skills/>
-    <Contact/>
+    {route.pathname!="/weather" && (<>
+      {route.pathname!="/tsk" && (<>
+        
+ 
+
+  
+   
     <Footer/>
   
+  
+    </>)}
+    </>)}
     </>)}
   </>)}
    </>)}

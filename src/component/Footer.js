@@ -1,47 +1,66 @@
-import React from 'react';
+import React from "react";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const socialLinks = [
+  {
+    icon: <FaLinkedin />,
+    url: "https://linkedin.com/in/sufiyan",
+    label: "LinkedIn",
+  },
+  {
+    icon: <FaGithub />,
+    url: "https://github.com/sufiyan",
+    label: "GitHub",
+  },
+  {
+    icon: <FaEnvelope />,
+    url: "mailto:sufiyan@example.com",
+    label: "Email",
+  },
+];
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="relative bg-gray-400 text-white py-12 overflow-hidden">
-      {/* Background Animation */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute animate-blob bg-blue-500 rounded-full w-32 h-32 top-20 left-10"></div>
-        <div className="absolute animate-blob bg-purple-500 rounded-full w-24 h-24 top-10 right-20"></div>
-        <div className="absolute animate-blob bg-green-500 rounded-full w-20 h-20 bottom-10 left-20"></div>
-        <div className="absolute animate-blob bg-yellow-500 rounded-full w-16 h-16 bottom-20 right-10"></div>
+    <footer className="bg-gradient-to-t from-gray-800 via-gray-900 to-black text-white py-12 px-6">
+      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8">
+        {/* Left: Name + Year */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center sm:text-left text-sm text-gray-400"
+        >
+          © {year} Sufiyan. All rights reserved.
+        </motion.div>
+
+        {/* Right: Social Icons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex gap-6"
+        >
+          {socialLinks.map((link, idx) => (
+            <a
+              key={idx}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={link.label}
+              className="text-gray-400 hover:text-cyan-500 transition-colors text-2xl p-2 rounded-full hover:bg-gray-800"
+            >
+              {link.icon}
+            </a>
+          ))}
+        </motion.div>
       </div>
-      
-      {/* Content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Information */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Contact Us</h2>
-            <p className="mb-2">Email: example@example.com</p>
-            <p className="mb-2">Phone: +1234567890</p>
-            <p>Address: 123 Main Street, City, Country</p>
-          </div>
-          {/* Quick Links */}
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold mb-4">Quick Links</h2>
-            <ul>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white transition duration-300">Home</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white transition duration-300">About Us</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white transition duration-300">Services</a></li>
-              <li className="mb-2"><a href="#" className="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
-            </ul>
-          </div>
-          {/* Social Media */}
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
-            <div className="flex space-x-4">
-              <a href="#" className="text-xl text-gray-400 hover:text-white transition duration-300"><i className="fab fa-facebook"></i></a>
-              <a href="#" className="text-xl text-gray-400 hover:text-white transition duration-300"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="text-xl text-gray-400 hover:text-white transition duration-300"><i className="fab fa-instagram"></i></a>
-              <a href="#" className="text-xl text-gray-400 hover:text-white transition duration-300"><i className="fab fa-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
+
+      {/* Bottom: Optional Small Info (Privacy, Terms, etc.) */}
+      <div className="mt-8 text-center text-sm text-gray-500">
+        <p>Privacy | Terms & Conditions | Sitemap</p>
       </div>
     </footer>
   );

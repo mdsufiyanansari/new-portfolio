@@ -1,78 +1,81 @@
 import React, { useState } from 'react';
-import { HashLink as Link } from 'react-router-hash-link';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
+  const menuItems = [
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Skills', to: '/skills' },
+    { name: 'Contact', to: '/contact' },
+  ];
+
   return (
-    <>
-      <div className="z-50 bg-white w-screen h-[80px] bg-opacity-55 backdrop-filter backdrop-blur-2xl fixed flex justify-between items-center px-4 md:px-8">
-        <div className="w-[150px] h-[100px] center font-bold text-green-400">
-          <img src="image/img1.png" alt="Logo" />
+    <motion.nav
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="bg-gradient-to-r from-cyan-500 via-teal-400 to-cyan-500 shadow-md sticky top-0 z-50"
+    >
+      <div className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-white text-2xl font-bold">My Website</div>
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex space-x-8">
+          <ul className="flex space-x-8">
+            {menuItems.map((item) => (
+              <li key={item.name}>
+                <Link to={item.to} className="text-white hover:text-cyan-800 transition-all duration-300">
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="text-2xl hidden md:flex gap-[40px]">
-          <div className="text-green-300 font-bold cursor-pointer hover:text-green-600">
-            <Link smooth to='/#'>Home</Link>
-          </div>
-          <div className="cursor-pointer hover:text-green-500">
-            <Link smooth to='/#about'>About</Link>
-          </div>
-          <div className="cursor-pointer hover:text-green-500">
-            <Link smooth to='/#projects'>Projects</Link>
-          </div>
-          <div className="cursor-pointer hover:text-green-500">
-            <Link smooth to='/#Skills'>Skills</Link>
-          </div>
-          <div className="cursor-pointer hover:text-green-500">
-            <Link smooth to='/#contact'>Contact</Link>
-          </div>
-        </div>
-        <button className="hidden md:block bg-white w-[150px] h-[50px] border-green-300 border-[4px] rounded-full text-xl font-semibold text-green-400 hover:bg-green-300 hover:text-white hover:border-white duration-700">
-          Hire me
-        </button>
+
+        {/* Mobile Menu Icon */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-green-400 text-3xl focus:outline-none">
-            {isOpen ? <FaTimes /> : <FaBars />}
+          <button className="text-white z-50" onClick={toggleMenu}>
+            {isMenuOpen ? '✖️' : '☰'}
           </button>
         </div>
       </div>
-      {isOpen && (
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
         <motion.div
-          className="md:hidden fixed top-0 left-0 w-full h-full bg-white bg-opacity-90 backdrop-filter backdrop-blur-lg flex flex-col justify-center items-center z-40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ x: '100%' }}
+          animate={{ x: 0 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          className="fixed inset-0 bg-gradient-to-r from-cyan-500 via-teal-400 to-cyan-500 flex justify-center items-center z-40"
         >
-          <div className="text-2xl flex flex-col gap-6">
-            <div className="text-green-300 font-bold cursor-pointer hover:text-green-600" onClick={toggleMenu}>
-              <Link smooth to='/#'>Home</Link>
-            </div>
-            <div className="cursor-pointer hover:text-green-500" onClick={toggleMenu}>
-              <Link smooth to='/#about'>About</Link>
-            </div>
-            <div className="cursor-pointer hover:text-green-500" onClick={toggleMenu}>
-              <Link smooth to='/#projects'>Projects</Link>
-            </div>
-            <div className="cursor-pointer hover:text-green-500" onClick={toggleMenu}>
-              <Link smooth to='/#Skills'>Skills</Link>
-            </div>
-            <div className="cursor-pointer hover:text-green-500" onClick={toggleMenu}>
-              <Link smooth to='/#contact'>Contact</Link>
-            </div>
+          <div className="flex flex-col space-y-8 text-white text-xl">
+            <ul className="space-y-8 text-center">
+              {menuItems.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.to}
+                    onClick={() => setIsMenuOpen(false)} // close menu on click
+                    className="hover:text-cyan-800 transition-all duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
-          <button className="mt-10 bg-white w-[150px] h-[50px] border-green-300 border-[4px] rounded-full text-xl font-semibold text-green-400 hover:bg-green-300 hover:text-white hover:border-white duration-700">
-            Hire me
-          </button>
         </motion.div>
       )}
-    </>
+    </motion.nav>
   );
-}
+};
 
 export default Navbar;
